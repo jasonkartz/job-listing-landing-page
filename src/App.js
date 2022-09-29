@@ -1,4 +1,5 @@
 import jobs from "./data/data.json";
+import JobPost from "./components/JobPost";
 
 function App() {
   return (
@@ -7,35 +8,21 @@ function App() {
       <main>
         {jobs.map((job, index) => {
           return (
-            <div
+            <JobPost
               key={index}
-              className={`job-post ${job.featured && "featured-border"}`}
-            >
-              <img className="job-logo" src={job.logo} alt={job.company} />
-              <div className="job-info-section">
-                <div className="job-header">
-                  <h2>{job.company}</h2>
-                  {job.new && <span className="new">NEW!</span>}
-                  {job.featured && <span className="featured">FEATURED</span>}
-                </div>
-                <h1>{job.position}</h1>
-
-                <p className="job-details">
-                  {job.postedAt} &#x2022; {job.contract} &#x2022; {job.location}
-                </p>
-              </div>
-              <hr />
-              <div className="job-tags">
-                <span className="tag">{job.role}</span>
-                <span className="tag">{job.level}</span>
-                {job.languages &&
-                  job.languages.map((lang) => (
-                    <span className="tag">{lang}</span>
-                  ))}
-                {job.tools &&
-                  job.tools.map((tool) => <span className="tag">{tool}</span>)}
-              </div>
-            </div>
+              featured={job.featured}
+              company={job.company}
+              logo={job.logo}
+              newJob={job.new}
+              position={job.position}
+              postedAt={job.postedAt}
+              contract={job.contract}
+              location={job.location}
+              role={job.role}
+              level={job.level}
+              languages={job.languages}
+              tools={job.tools}
+            />
           );
         })}
       </main>
