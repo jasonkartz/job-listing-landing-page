@@ -1,29 +1,25 @@
 import jobs from "./data/data.json";
 import JobPost from "./components/JobPost";
+import TagFilter from "./components/TagFilter";
+import { useState } from "react";
 
 function App() {
+  const [tagFilter, setTagFilter] = useState([]);
+  console.log(tagFilter);
   return (
     <>
       <header></header>
       <main>
-        <div className="tag-filter">
-          <div className="tags-selected-container">
-            <div className="tag-selected">
-              <span>Frontend</span>
-              <button className="btn-tag-clear"></button>
-            </div>
-            <div className="tag-selected">
-              <span>CSS</span>
-              <button className="btn-tag-clear"></button>
-            </div>
-            <div className="tag-selected">
-              <span>JavaScript</span>
-              <button className="btn-tag-clear"></button>
-            </div>
-          </div>
-          <button className="btn-clear-all">Clear</button>
-        </div>
+        {tagFilter.length > 0 && (
+          <TagFilter tagArray={tagFilter} setTagFilter={setTagFilter} />
+        )}
         {jobs.map((job, index) => {
+          const tagsList = [].concat(
+            job.role,
+            job.level,
+            job.languages && job.languages,
+            job.tools && job.tools
+          );
           return (
             <JobPost
               key={index}
@@ -35,10 +31,9 @@ function App() {
               postedAt={job.postedAt}
               contract={job.contract}
               location={job.location}
-              role={job.role}
-              level={job.level}
-              languages={job.languages}
-              tools={job.tools}
+              tagsList={tagsList}
+              setTagFilter={setTagFilter}
+              tagFilter={tagFilter}
             />
           );
         })}

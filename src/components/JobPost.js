@@ -7,10 +7,9 @@ export default function JobPost({
   postedAt,
   contract,
   location,
-  role,
-  level,
-  languages,
-  tools,
+  tagsList,
+  tagFilter,
+  setTagFilter,
 }) {
   return (
     <div className={`job-post ${featured && "featured-border"}`}>
@@ -29,20 +28,17 @@ export default function JobPost({
       </div>
       <hr />
       <div className="job-tags">
-        <span className="tag">{role}</span>
-        <span className="tag">{level}</span>
-        {languages &&
-          languages.map((lang, index) => (
-            <span key={index} className="tag">
-              {lang}
-            </span>
-          ))}
-        {tools &&
-          tools.map((tool, index) => (
-            <span key={index} className="tag">
-              {tool}
-            </span>
-          ))}
+        {tagsList.map((tag, index) => (
+          <span
+            key={index}
+            className="tag"
+            onClick={() =>
+              !tagFilter.includes(tag) && setTagFilter([...tagFilter, tag])
+            }
+          >
+            {tag}
+          </span>
+        ))}
       </div>
     </div>
   );
