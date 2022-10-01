@@ -21,8 +21,14 @@ html {
 
 body {
   font-family: "League Spartan", sans-serif;
-  font-size: 1.6rem;
+  font-size: clamp(1.6rem, 2vw, 1.8rem);
+  letter-spacing: clamp(-0.123077px, 2vw, -0.138462px);
   background-color: var(--light-gray-cyan-background);
+}
+button {
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(1.6rem, 2vw, 1.8rem);
+  letter-spacing: clamp(-0.123077px, 2vw, -0.138462px);
 }
 header {
   width: 100%;
@@ -41,10 +47,11 @@ main {
   position: relative;
 }
 h1 {
-  font-size: 1.5rem;
+  font-size: clamp(1.5rem, 2vw, 2.2rem);
   font-weight: 700;
   color: var(--very-dark-gray-cyan);
 }
+
 .tag-filter {
   background-color: white;
   padding: 2rem;
@@ -70,6 +77,7 @@ h1 {
   display: flex;
   min-height: 3.2rem;
   align-items: center;
+  letter-spacing: -0.123077px;
   background-color: var(--light-gray-cyan-filter);
   border-radius: 0.4rem;
 }
@@ -127,6 +135,10 @@ h1 {
   position: absolute;
   top: -3rem;
 }
+.job-post h1:hover {
+  color: var(--desaturated-dark-cyan);
+  cursor: pointer;
+}
 .job-info-section {
   display: flex;
   flex-direction: column;
@@ -139,7 +151,7 @@ h1 {
   gap: 1.7rem;
 }
 h2 {
-  font-size: 1.3rem;
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
   color: var(--desaturated-dark-cyan);
   font-weight: 700;
   margin-right: 1.6rem;
@@ -186,9 +198,6 @@ hr {
   cursor: pointer;
 }
 @media (min-width: 1158px) {
-  body {
-    font-size: 1.8rem;
-  }
   header {
     background: url("../public/images/bg-header-desktop.svg") no-repeat
       var(--desaturated-dark-cyan) top;
@@ -215,12 +224,6 @@ hr {
     width: 8.8rem;
     height: 8.8rem;
     position: static;
-  }
-  h2 {
-    font-size: 1.8rem;
-  }
-  h1 {
-    font-size: 2.2rem;
   }
   .job-tags {
     margin-left: auto;
