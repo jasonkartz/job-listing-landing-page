@@ -5,7 +5,6 @@ import { useState } from "react";
 
 function App() {
   const [tagFilter, setTagFilter] = useState([]);
-  console.log(tagFilter);
   return (
     <>
       <header></header>
