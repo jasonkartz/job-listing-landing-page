@@ -7,7 +7,7 @@ export default function JobPost({
   postedAt,
   contract,
   location,
-  tagsList,
+  tagList,
   tagFilter,
   setTagFilter,
 }) {
@@ -28,7 +28,7 @@ export default function JobPost({
       </div>
       <hr />
       <div className="job-tags">
-        {tagsList.map((tag, index) => (
+        {tagList.map((tag, index) => (
           <span
             key={index}
             className="tag"

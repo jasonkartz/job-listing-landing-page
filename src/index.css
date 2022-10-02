@@ -208,6 +208,9 @@ hr {
   main {
     padding: 7.6rem 2.4rem;
   }
+  hr {
+    display: none;
+  }
   .tag-filter {
     padding-inline: 4rem;
     top: -11rem;

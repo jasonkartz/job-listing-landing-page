@@ -14,28 +14,33 @@ function App() {
           <TagFilter tagArray={tagFilter} setTagFilter={setTagFilter} />
         )}
         {jobs.map((job, index) => {
-          const tagsList = [].concat(
+          const tagList = [].concat(
             job.role,
             job.level,
             job.languages && job.languages,
             job.tools && job.tools
           );
-          return (
-            <JobPost
-              key={index}
-              featured={job.featured}
-              company={job.company}
-              logo={job.logo}
-              newJob={job.new}
-              position={job.position}
-              postedAt={job.postedAt}
-              contract={job.contract}
-              location={job.location}
-              tagsList={tagsList}
-              setTagFilter={setTagFilter}
-              tagFilter={tagFilter}
-            />
-          );
+          if (
+            tagFilter.length === 0 ||
+            tagFilter.every((item) => tagList.includes(item))
+          ) {
+            return (
+              <JobPost
+                key={index}
+                featured={job.featured}
+                company={job.company}
+                logo={job.logo}
+                newJob={job.new}
+                position={job.position}
+                postedAt={job.postedAt}
+                contract={job.contract}
+                location={job.location}
+                tagList={tagList}
+                setTagFilter={setTagFilter}
+                tagFilter={tagFilter}
+              />
+            );
+          }
         })}
       </main>
     </>
